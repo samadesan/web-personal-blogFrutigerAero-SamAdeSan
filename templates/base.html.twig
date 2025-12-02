@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Hola y bienvenido a la nostalgia. :)">
+        <title>The Frutiger Aero</title>
+        <link rel="stylesheet" href="css/estilos.css">
+        <link rel="icon" type="image/png" href="img/frutiger_aero_icon.png">
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="window">
+            <div class="title-bar">
+                <span class="title">samadesan.github.io/frutiger-aero</span>
+                <div class="window-buttons">
+                    <button class="minimize"></button>
+                    <button class="maximize"></button>
+                    <button class="close"></button>
+                </div>
+            </div>
+            <div class="main-content">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+        <footer>
+            <div>
+                <section id="blogroll">
+                    <header>
+                        <h3>Blogroll</h3>
+                    </header>
+                    <ul>
+                        <li>NETTUTS+</li>
+                        <li>FreelanceSwitch</li>
+                        <li>In The Woods</li>
+                        <li>Netsetter</li>
+                        <li>PSDTUTS+</li>
+                    </ul>
+                </section>
+                <section id="popular">
+                    <header>
+                        <h3>Popular</h3>
+                    </header>
+                    <ul>
+                        <li>This is the title of a blog post</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipisicing elit, sed do eiusmod</li>
+                        <li>Duis aute irure dolor</li>
+                        <li>Excepteur sint occaecat cupidatat</li>
+                        <li>Reprehenderit in voluptate velit</li>
+                        <li>Officia deserunt mollit anim id est laborum</li>
+                        <li>Lorem ipsum dolor sit amet</li>
+                    </ul>
+                </section>
+            </div>
+        </footer>
     </body>
 </html>

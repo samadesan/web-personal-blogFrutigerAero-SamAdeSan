@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title%}Contacto{% endblock %}
+{% block body %}
+<div class="main-content">
+    <div class="menu-bar">
+        <nav id="navMain">
+            <ul>
+                <li><a href="{{ path('index') }}">Blog</a></li>
+                <li><a href="{{ path('about') }}">Sobre Nosotros</a></li>
+                <li><a href="{{ path('archieves') }}">Archivos</a></li>
+                <li class="selected"><a href="#">Contacto</a></li>
+                <li class="subscribe"><a href="#">Suscríbete via. RSS</a></li>
+            </ul>
+        </nav>
+        <nav id="navLogin">
+            <ul>
+                <li><a href="#">log in</a></li>
+                <li><a href="#">sign in</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="body-content">
+        <header id="headerImg">
+            <img src="img/frutiger-aero.png" alt="titulo">
+            <img src="img/welcomeFA.png" alt="welcomeFA">
+        </header>
+        <div id="contenido-contacto">
+            <form action="#" id="formularioContacto">
+                <h3>¡Contactanos!</h3>
+                <p>
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" id="name">
+                </p>
+                <p>
+                    <label for="email">E-mail</label>
+                    <input type="text" name="name" id="email">
+                </p>
+                <p>
+                    <label for="mensaje">Mensaje</label>
+                    <textarea name="name" id="mensaje"></textarea>
+                </p>
+                <p>
+                    <input type="submit" value="Enviar">
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

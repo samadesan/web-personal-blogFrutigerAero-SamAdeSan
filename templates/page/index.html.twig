@@ -1,20 +1,123 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello PageController!{% endblock %}
-
+{% block title%}Inicio{% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="menu-bar">
+        <nav id="navMain">
+            <ul>
+                <li class="selected"><a href="#">Blog</a></li>
+                <li><a href="{{ path('about') }}">Sobre Nosotros</a></li>
+                <li><a href="{{ path('archieves') }}">Archivos</a></li>
+                <li><a href="{{ path('contact') }}">Contacto</a></li>
+                <li class="subscribe"><a href="#">Suscríbete via. RSS</a></li>
+            </ul>
+        </nav>
+        <nav id="navLogin">
+            <ul>
+                <li><a href="#">log in</a></li>
+                <li><a href="#">sign in</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="body-content">
+        <header id="headerImg">
+            <img src="img/frutiger-aero.png" alt="titulo">
+            <img src="img/welcomeFA.png" alt="welcomeFA">
+        </header>
+        <section id="intro">
+            <h2>¿Qué es "Frutiger Aero"?</h2>
+            <p>
+                Frutiger Aero es una estética de diseño popular entre 2004 y 2013 que combina tecnología y naturaleza, usando
+                elementos como cristales, burbujas, agua, peces y paisajes de cielos azules y verdes. Su nombre proviene de la
+                tipografía Frutiger y de la interfaz gráfica Windows Aero. El estilo se caracteriza por el esqueumorfismo
+                brillante y transparente, transmitiendo optimismo y una conexión con la naturaleza, pero desapareció en la
+                década de 2010 al ser reemplazado por el diseño plano y minimalista.
+            </p>
+        </section>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div id="contenido">
+            <div id="mainContenido">
+                <section id="cuerpoTexto">
+                    <header>
+                        <h2>Un diseño nostálgico</h2>
+                        <p>Escrito por Samuel Aded :D</p>
+                    </header>
+                    <div>
+                        <p>
+                            Frutiger Aero es una estética visual que combina colores brillantes, elementos naturales y texturas
+                            brillantes con un enfoque esqueuomórfico que busca dar familiaridad y accesibilidad a la tecnología.
+                            Entre sus motivos más característicos se encuentran cielos azules, agua, hierba, glóbulos brillantes
+                            peces tropicales, además de elementos brillantes y reflectantes que aportan sensación de profundidad
+                            y luminosidad. La estética ha sido descrita como retrofuturista, lúdica y maximalista, transmitiendo
+                            un optimismo tecnológico que contrasta con otras tendencias contemporáneas como la estética Y2K, más
+                            fría y futurista.
+                        </p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/alumno/VSCodeProjects/web-personal-blogFrutigerAero-SamAdeSan/src/Controller/PageController.php</code></li>
-        <li>Your template at <code>/home/alumno/VSCodeProjects/web-personal-blogFrutigerAero-SamAdeSan/templates/page/index.html.twig</code></li>
-    </ul>
-</div>
+                        <p>
+                            El surgimiento de Frutiger Aero se sitúa a mediados de la década de 2000, en un contexto donde las
+                            empresas tecnológicas buscaban interfaces más amigables y comprensibles para los usuarios, adoptando
+                            diseños humanistas y esqueuomórficos que facilitaban la transición hacia nuevas tecnologías,
+                            especialmente en dispositivos táctiles. Los sistemas operativos de Microsoft, como Windows Vista y
+                            Windows 7, incorporaron elementos típicos de esta estética, como transparencias suaves, efectos de
+                            vidrio, menús con sombras y animaciones de ventana. Asimismo, dispositivos móviles como el iPhone
+                            de primera generación y el Samsung Galaxy S adoptaron interfaces que combinaban colores vivos y
+                            controles intuitivos. En el ámbito de los videojuegos, títulos como Los Sims 3 y Fruit Ninja
+                            adoptaron colores saturados, fondos luminosos y efectos visuales que reflejan la filosofía estética
+                            de Frutiger Aero.
+                        </p>
+
+                        <p>
+                            Durante los años 2012 a 2014, la tendencia hacia el diseño plano, representada por la “Modern UI” de
+                            Microsoft y otros entornos de software, provocó un declive en la popularidad de Frutiger Aero. La
+                            interfaz plana se enfocaba en la simplicidad, colores sólidos y ausencia de texturas o efectos
+                            tridimensionales, contrastando con el maximalismo y la riqueza visual de Aero. A pesar de este
+                            declive, la estética no desapareció del todo, y a principios de la década de 2020 experimentó un
+                            renacimiento nostálgico, impulsado por la comunidad en línea y plataformas como Reddit, TikTok,
+                            Instagram y YouTube. Hashtags como #frutigeraero acumularon millones de interacciones y
+                            reproducciones, evidenciando el interés renovado por esta estética entre la Generación Z, que
+                            valora su carácter optimista, maximalista y su conexión con imágenes de la naturaleza.
+                        </p>
+
+                        <p>
+                            Frutiger Aero también se distingue por su amplitud y flexibilidad, lo que llevó a la creación de más
+                            de 23 subgéneros dentro de la familia estética, conocidos colectivamente como la Familia Frutiger
+                            (Frutiger Family). Esta clasificación buscaba delimitar propiedades visuales ambiguas como la
+                            saturación de colores, los tipos de texturas, la presencia de elementos brillantes y la integración
+                            de efectos tridimensionales o bokeh. La existencia de estos subgéneros refleja la complejidad de la
+                            estética y su capacidad de adaptarse a distintos productos y contextos, desde interfaces digitales
+                            hasta productos físicos como electrodomésticos, muebles o artículos de consumo.
+                        </p>
+                        <img alt="imagen" src="img/foto1_frutiger-aero.jpg">
+                        <p>
+                            El resurgimiento moderno de Frutiger Aero ha llevado a la especulación de que algunos elementos de
+                            Windows 11 y del Glassmorphism contemporáneo pueden estar influenciados por esta estética, mostrando
+                            cómo tendencias visuales del pasado pueden reaparecer con reinterpretaciones contemporáneas. Además,
+                            la popularidad de Frutiger Aero en redes sociales ha reforzado su carácter nostálgico y educativo,
+                            con comunidades activas como el subreddit r/FrutigerAero dedicadas a analizar interfaces, juegos y
+                            diseños de productos de la década de 2000 y principios de 2010.
+                        </p>
+
+                        <p>
+                            En esencia, Frutiger Aero representa un enfoque optimista, maximalista y humanista del diseño, que
+                            combina color, brillo, textura y familiaridad para crear interfaces atractivas y acogedoras. Su
+                            relevancia actual no solo se limita a la nostalgia, sino que también ofrece un contraste
+                            significativo frente a los estilos minimalistas modernos, mostrando cómo el diseño puede transmitir
+                            emociones y valores culturales a través de la estética visual.
+                        </p>
+                    </div>
+                </section>
+            </div>
+            <aside>
+                <section>
+                    <h3>Relacionado</h3>
+                    <ul>
+                        <li><a href="https://es.wikipedia.org/wiki/Frutiger_Aero">Frutiger Aero — Wikipedia</a></li>
+                        <li><a href="https://es.wikipedia.org/wiki/Y2K_(est%C3%A9tica)">Y2K</a></li>
+                        <li><a href="https://es.wikipedia.org/wiki/Skeuomorfismo">Skeuomorfismo</a></li>
+                        <li><a href="https://es.wikipedia.org/wiki/Vaporwave">Vaporwave</a></li>
+                        <li><a href="https://es.wikipedia.org/wiki/Cyberdelia">Cyberdelia</a></li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+    </div>
 {% endblock %}

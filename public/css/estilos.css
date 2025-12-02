@@ -443,6 +443,8 @@ form textarea {
 
 form input[type="submit"] {
     background: linear-gradient(rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    padding: 20px;
+    float: right;
 }
 
 footer {
