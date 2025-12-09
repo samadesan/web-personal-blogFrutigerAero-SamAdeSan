@@ -13,10 +13,18 @@
             </ul>
         </nav>
         <nav id="navLogin">
-            <ul>
-                <li><a href="#">log in</a></li>
-                <li><a href="#">sign in</a></li>
-            </ul>
+            {% if app.user %}
+                <a href="{{ path('app_logout') }}">
+                    {{ app.user.name }} - Cerrar Sesión
+                </a>
+            {% else %}
+                <a href="{{ path('app_login') }}">
+                    Iniciar Sesión
+                </a>
+                <a href="{{ path('app_register') }}">
+                    Registrarse
+                </a>
+            {% endif %}
         </nav>
     </div>
     <div class="body-content">

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+    <div class="menu-bar">
+        <nav id="navMain">
+            <ul>
+                <li><a href="{{ path('index') }}">Blog</a></li>
+                <li><a href="{{ path('about') }}">Sobre Nosotros</a></li>
+                <li><a href="{{ path('archieves') }}">Archivos</a></li>
+                <li><a href="{{ path('contact') }}">Contacto</a></li>
+                <li class="subscribe"><a href="#">Suscríbete via. RSS</a></li>
+            </ul>
+        </nav>
+        <nav id="navLogin">
+            {% if app.user %}
+                <a href="{{ path('app_logout') }}">
+                    {{ app.user.name }} - Cerrar Sesión
+                </a>
+            {% else %}
+                <a href="{{ path('app_login') }}">
+                    Iniciar Sesión
+                </a>
+                <a href="{{ path('app_register') }}">
+                    Registrarse
+                </a>
+            {% endif %}
+        </nav>
+    </div>
+    <div class="body-content">
+        <header id="headerImg">
+            <img src="img/frutiger-aero.png" alt="titulo">
+            <img src="img/welcomeFA.png" alt="welcomeFA">
+        </header>
+        <div id="contenido-register">
+            <h1>Regístrate</h1>
+
+            <p>Regístrate, si eres nuevo. </p>
+            <p>Asegúrate antes de haber iniciado sesión. Si ya la iniciaste no hace falta que hagas este paso.</p>
+            <p>Dale a <i>"Iniciar sesión"</i> para entrar con tu cuenta.</p>
+
+            {{ form_errors(registrationForm) }}
+            {{ form_start(registrationForm) }}
+            <p>
+                {{ form_row(registrationForm.name, {
+                    label: 'Nombre Completo'
+                }) }}
+            </p>
+            <p>
+                {{ form_row(registrationForm.email, {
+                    label: 'Email / Correo electrónico'
+                }) }}
+            </p>
+            <p>
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Contraseña'
+                }) }}
+            </p>
+            <p>
+                {{ form_row(registrationForm.agreeTerms, {
+                    label: 'Estoy de acuerdo con los terminos'
+                }) }}
+            </p>
+
+            <button type="submit" class="btn">Registrarse</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

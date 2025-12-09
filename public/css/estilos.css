@@ -89,14 +89,14 @@ body {
     background: url("../img/rss.png") left center no-repeat;
 }
 
-.menu-bar #navLogin ul {
+.menu-bar #navLogin {
     display: flex;
     list-style: none;
     gap: 15px;
     padding-right: 10px;
 }
 
-.menu-bar #navLogin ul li a {
+.menu-bar #navLogin a {
     display: flex;
     align-items: center;
     font-size: 14px;
@@ -107,23 +107,11 @@ body {
     border-radius: 5px;
 }
 
-.menu-bar #navLogin ul li.selected a {
-    color: #fff;
-}
-
-.menu-bar #navLogin ul li.subscribe a {
-    margin-left: 22px;
-    padding-left: 33px;
-    text-align: left;
-    background: url("../img/rss.png") left center no-repeat;
-}
-
 .body-content {
     width: 100%;
-    margin: 0 auto;
     box-sizing: border-box;
     border: 1px solid black;
-    background: linear-gradient(to right, rgba(129, 203, 255, 0.5), rgba(128, 255, 235, 0.5), rgba(142, 255, 128, 0.5));
+    margin: 0 auto 9px;
 }
 
 .body-content #headerImg{
@@ -440,12 +428,32 @@ article video, article audio {
     border: 1px solid rgb(0 0 0);
 }
 
+#contenido-login, #contenido-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(0 0 0);
+    padding-bottom: 12px;
+    width: auto;
+    height: 500px;
+}
+
 #formularioContacto {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 30px;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
 form p {
     display: table;
     margin-bottom: 12px;
@@ -453,19 +461,19 @@ form p {
 }
 
 form label {
-    display: table-cell;
+    text-align: left;
     padding-right: 20px;
-    text-align: right;
     font-weight: bold;
     vertical-align: top;
 }
 
-form input[type="text"], form input[type="email"] {
+form input[type="text"], form input[type="email"], form input[type="password"] {
     display: table-cell;
     width: 300px;
     height: 20px;
     border: 1px solid #d7d7d7;
     background: linear-gradient(rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    padding: 12px;
 }
 
 form textarea {
@@ -477,8 +485,13 @@ form textarea {
 
 form input[type="submit"] {
     background: linear-gradient(rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
-    padding: 20px;
     float: right;
+}
+
+form button[type="submit"] {
+    background: linear-gradient(rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    float: right;
+    padding: 10px;
 }
 
 footer {
