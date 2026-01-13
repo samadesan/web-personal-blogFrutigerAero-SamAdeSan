@@ -36,19 +36,31 @@
                     </article>
                 </section>
                 <section id="Galería de imagenes">
-                    <header>
-                        <h3>Galería de imágenes Frutiger Aero</h3>
-                    </header>
-                    <ul class="image-list">
-                        <li><img src="img/bg-blue-frutiger-aero-minimalist.webp" alt="Fondo azul minimalista Frutiger Aero"></li>
-                        <li><img src="img/blue-bg.webp" alt="Fondo azul simple"></li>
-                        <li><img src="img/foto1_frutiger-aero.jpg" alt="Primera foto estilo Frutiger Aero"></li>
-                        <li><img src="img/foto-intro.jpg" alt="Imagen de introducción"></li>
-                        <li><img src="img/frutiger-aero.png" alt="Logo Frutiger Aero"></li>
-                        <li><img src="img/frutiger_aero_icon.png" alt="Icono Frutiger Aero"></li>
-                        <li><img src="img/iconos_FA.webp" alt="Iconos Frutiger Aero"></li>
-                        <li><img src="img/frutiger-aero-1.webp" alt="Foto Frutiger Aero"></li>
-                    </ul>
+                    {# Aquí el código de la galería de imagenes de las personas que lo han publicado en la categoría (poner categoría también) #}
+                    <div class="image-grid">
+                        {% for image in images %}
+                            <div class="image-item">
+                                <img src="{{ asset('uploads/images/' ~ image.file|url_encode) }}" alt="Imagen {{ loop.index }}">
+                                <p><strong>Categoría:</strong> {{ image.category.name }}</p>
+                                <p>
+                                    <button class="btn-like" data-id="{{ image.id }}">👍</button> Likes: <span id="likes-{{ image.id }}">{{ image.numLikes }}</span>
+                                    | 👁️ Vistas: {{ image.numViews }}
+                                    | <button class="btn-download" data-id="{{ image.id }}" data-file="{{ asset('images/index/gallery/' ~ image.file|url_encode) }}">⬇</button>️ Descargas: <span id="downloads-{{ image.id }}">{{ image.numDownloads }}</span>
+                                </p>
+                                <button class="btn-delete" data-id="{{ image.id }}">Borrar imagen</button>
+                            </div>
+                        {% else %}
+                            <div class="no-images">
+                                <p>No hay imágenes publicadas todavía.</p>
+                                <p>¡Pulsa el botón para subir una tuya!</p>
+                                <a href="{{ path('imagen-nueva') }}" class="custom-file-button">Subir imagen nueva</a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    {% block javascripts %}
+                        <script src="{{ asset('js/botones-archieves.js') }}"></script>
+                    {% endblock %}
                 </section>
             </div>
             <aside>

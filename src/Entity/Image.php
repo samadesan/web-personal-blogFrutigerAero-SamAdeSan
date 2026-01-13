@@ -16,16 +16,17 @@ class Image
     #[ORM\Column(length: 255)]
     private ?string $file = null;
 
-    #[ORM\Column]
-    private ?int $numLikes = null;
+    #[ORM\Column(type: "integer", options: ["default" => 0])]
+    private int $numLikes = 0;
 
-    #[ORM\Column]
-    private ?int $numViews = null;
+    #[ORM\Column(type: "integer", options: ["default" => 0])]
+    private int $numViews = 0;
 
-    #[ORM\Column]
-    private ?int $numDownloads = null;
+    #[ORM\Column(type: "integer", options: ["default" => 0])]
+    private int $numDownloads = 0;
 
-    #[ORM\ManyToOne(inversedBy: 'images')]
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
     public function getId(): ?int
@@ -41,11 +42,10 @@ class Image
     public function setFile(string $file): static
     {
         $this->file = $file;
-
         return $this;
     }
 
-    public function getNumLikes(): ?int
+    public function getNumLikes(): int
     {
         return $this->numLikes;
     }
@@ -53,11 +53,10 @@ class Image
     public function setNumLikes(int $numLikes): static
     {
         $this->numLikes = $numLikes;
-
         return $this;
     }
 
-    public function getNumViews(): ?int
+    public function getNumViews(): int
     {
         return $this->numViews;
     }
@@ -65,11 +64,10 @@ class Image
     public function setNumViews(int $numViews): static
     {
         $this->numViews = $numViews;
-
         return $this;
     }
 
-    public function getNumDownloads(): ?int
+    public function getNumDownloads(): int
     {
         return $this->numDownloads;
     }
@@ -77,7 +75,6 @@ class Image
     public function setNumDownloads(int $numDownloads): static
     {
         $this->numDownloads = $numDownloads;
-
         return $this;
     }
 
@@ -89,7 +86,6 @@ class Image
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
-
         return $this;
     }
 }

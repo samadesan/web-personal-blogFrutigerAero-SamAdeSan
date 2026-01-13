@@ -22,7 +22,46 @@
         <section id="contenido" style="padding: 10px 25px;">
             <div id="images">
                 <h1>Images</h1>
+
+                <form name="image_form" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <div id="image_form" class="form-horizontal">
+
+                        {# Botón personalizado para seleccionar archivo #}
+                        <div class="custom-file-wrapper">
+                            {{ form_label(form.file) }}
+                            {{ form_widget(form.file, {'attr': {'class':'custom-file-input', 'style':'display:none;'}}) }}
+                            <label for="{{ form.file.vars.id }}" class="custom-file-button">
+                                Seleccionar archivo<span class="custom-file-text" id="file-name">Ningún archivo seleccionado</span>
+                            </label>
+
+                        </div>
+
+                        {{ form_row(form.numLikes) }}
+                        {{ form_row(form.numViews) }}
+                        {{ form_row(form.numDownloads) }}
+                        {{ form_row(form.category) }}
+
+                        {{ form_widget(form.Enviar, {'attr': {'class':'submit-button'}}) }}
+
+                        {{ form_rest(form) }}
+                    </div>
+                </form>
+                <hr class="divider">
             </div>
         </section>
+
+        {# JS para mostrar el nombre del archivo seleccionado #}
+        <script>
+            const inputFile = document.querySelector('.custom-file-input');
+            const fileName = document.getElementById('file-name');
+
+            inputFile.addEventListener('change', function() {
+                if(this.files.length > 0){
+                    fileName.textContent = this.files[0].name;
+                } else {
+                    fileName.textContent = "Ningún archivo seleccionado";
+                }
+            });
+        </script>
     </div>
 {% endblock %}

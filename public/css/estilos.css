@@ -319,7 +319,7 @@ h3 {
     border: 1px solid rgb(0 0 0);
     background: #bdf7f1;
     justify-content: space-between;
-}   
+}
 
 aside {
     width: 100%;
@@ -531,8 +531,107 @@ form button[type="submit"]:hover {
     transform: scale(1.05);
 }
 
+/* Form imágenes*/
+#contenido #images form {
+    padding: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    margin: auto;
+}
+
+#contenido #images form .form-horizontal {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: auto;
+    gap: 10px;
+}
+
+#contenido #images form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#contenido #images form .form-horizontal input {
+    display: table-cell;
+    width: 300px;
+    height: 20px;
+    border: 1px solid black;
+    background: linear-gradient(-33deg, rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#contenido #images form .form-horizontal .file {
+    display: table-cell;
+    width: 300px;
+    height: 20px;
+    border: 1px solid black;
+    background: linear-gradient(-33deg, rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#contenido #images form .form-horizontal input[type="file"] {
+    color: black;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+#contenido #images form .form-horizontal select {
+    padding: 3px;
+    border: 1px solid black;
+    background: linear-gradient(-33deg, rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    border-radius: 15px;
+}
+
+#contenido #images form .form-horizontal select option {
+    color: white;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    background: #07632c !important;
+}
+
+.custom-file-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.custom-file-button {
+    cursor: pointer;
+    padding: 12px 25px;
+    border-radius: 15px;
+    background: linear-gradient(-33deg, rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.custom-file-button:hover {
+    background: linear-gradient(-33deg, rgb(0, 255, 0), rgb(0, 0, 255));
+    transform: scale(1.05);
+}
+
+.custom-file-text {
+    font-size: 14px;
+    color: black;
+    padding: 4px 8px;
+    margin-left: 5px;
+    display: inline-block;
+    border-radius: 4px;
+    background: linear-gradient(-33deg, rgba(0, 128, 0, 0.36), rgba(0, 0, 255, 0.36));
+}
 
 
+/* Categorías */
 #categories {
     display: flex;
     flex-direction: column;
@@ -594,8 +693,106 @@ form button[type="submit"]:hover {
 .table tbody tr:last-child td {
     border-bottom: none;
 }
+/* Galería de imagenes en 'archieves/' */
+#galeria {
+    padding: 20px 0;
+}
 
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
 
+.image-item {
+    background: linear-gradient(135deg, rgba(0,128,0,0.1), rgba(0,0,255,0.1));
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.image-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.image-item p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+}
+
+/* Crear imagen nueva */
+#contenido-imagen-nueva #imagen-nueva  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+#contenido-imagen-nueva #imagen-nueva .form-horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 30px;
+}
+
+#contenido-imagen-nueva #imagen-nueva .form-horizontal input {
+    display: table-cell;
+    width: 300px;
+    height: 20px;
+    border: 1px solid black;
+    background: linear-gradient(-33deg, rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#contenido-imagen-nueva #imagen-nueva .form-horizontal select {
+    padding: 3px;
+    border: 1px solid black;
+    background: linear-gradient(-33deg, rgba(0, 0, 255, 0.36), rgba(0, 128, 0, 0.36));
+    border-radius: 15px;
+}
+
+#contenido-imagen-nueva #imagen-nueva .form-horizontal select option {
+    color: white;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    background: #07632c !important;
+}
+
+#contenido-imagen-nueva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.flash-success {
+    color: green;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.flash-error {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.form-row {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Footer */
 footer {
     position: absolute;
     left: 0;

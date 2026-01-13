@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subir Imagen{% endblock %}
+
+{% block body %}
+    <div class="menu-bar">
+        {{ include ('page/partials/navigator.html.twig') }}
+    </div>
+    <div class="body-content">
+        <header id="headerImg">
+            <img src="img/frutiger-aero.png" alt="titulo">
+            <img src="img/welcomeFA.png" alt="welcomeFA">
+        </header>
+        <div id="contenido-imagen-nueva">
+            <div id="imagen-nueva">
+                <h2>Subir nueva imagen</h2>
+
+                {{ form_start(form, {'attr': {'enctype':'multipart/form-data', 'class':'form-horizontal'}}) }}
+
+                <div class="custom-file-wrapper">
+                    {{ form_label(form.file) }}
+                    {{ form_widget(form.file, {'attr': {'class':'custom-file-input', 'style':'display:none;'}}) }}
+                    <label for="{{ form.file.vars.id }}" class="custom-file-button">
+                        Seleccionar archivo
+                        <span class="custom-file-text" id="file-name">Ningún archivo seleccionado</span>
+                    </label>
+                </div>
+
+                {{ form_row(form.category) }}
+                {{ form_widget(form.Enviar, {'attr': {'class':'btn btn-success'}}) }}
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

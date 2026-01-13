@@ -1,3 +1,6 @@
+parameters:
+  images_directory: '%kernel.project_dir%/public/uploads/images'
+  portfolio_directory: '%kernel.project_dir%/public/uploads/portfolio'
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:

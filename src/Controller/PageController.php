@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -19,9 +21,15 @@ final class PageController extends AbstractController
         return $this->render('page/about.html.twig', []);
     }
     #[Route('/archieves', name: 'archieves')]
-    public function archieves(): Response
+    public function archieves(ManagerRegistry $doctrine): Response
     {
-        return $this->render('page/archieves.html.twig', []);
+        // Obtenemos todas las imágenes de la base de datos
+        $images = $doctrine->getRepository(Image::class)->findAll();
+
+        // Renderizamos Twig pasando la variable 'images'
+        return $this->render('page/archieves.html.twig', [
+            'images' => $images,
+        ]);
     }
     #[Route('/contact', name: 'contact')]
     public function contact(): Response
