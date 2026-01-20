@@ -38,8 +38,6 @@ class ImageController extends AbstractController
                         $this->getParameter('images_directory'), // Ya lo tienes configurado en services.yaml
                         $newFilename
                     );
-
-// Copiar a portfolio si quieres
                     $filesystem = new Filesystem();
                     $filesystem->copy(
                         $this->getParameter('images_directory') . '/' . $newFilename,
@@ -68,32 +66,26 @@ class ImageController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route('/image/like/{id}', name: 'image_like', methods: ['POST'])]
-    public function like(int $id, EntityManagerInterface $em, ImageRepository $repo): JsonResponse
+    #[Route('/image/like/{id}', methods: ['POST'])]
+    public function like(Image $image, EntityManagerInterface $em): JsonResponse
     {
-        $image = $repo->find($id);
-        if (!$image) {
-            return $this->json(['error' => 'Imagen no encontrada'], 404);
-        }
-
         $image->setNumLikes($image->getNumLikes() + 1);
         $em->flush();
 
-        return $this->json(['numLikes' => $image->getNumLikes()]);
+        return $this->json([
+            'numLikes' => $image->getNumLikes()
+        ]);
     }
 
-    #[Route('/image/download/{id}', name: 'image_download', methods: ['POST'])]
-    public function download(int $id, EntityManagerInterface $em, ImageRepository $repo): JsonResponse
+    #[Route('/image/download/{id}', methods: ['POST'])]
+    public function download(Image $image, EntityManagerInterface $em): JsonResponse
     {
-        $image = $repo->find($id);
-        if (!$image) {
-            return $this->json(['error' => 'Imagen no encontrada'], 404);
-        }
-
         $image->setNumDownloads($image->getNumDownloads() + 1);
         $em->flush();
 
-        return $this->json(['numDownloads' => $image->getNumDownloads()]);
+        return $this->json([
+            'numDownloads' => $image->getNumDownloads()
+        ]);
     }
 
     #[Route('/image/view/{id}', name: 'image_view', methods: ['POST'])]
@@ -113,17 +105,16 @@ class ImageController extends AbstractController
     #[Route('/image/delete/{id}', name: 'image_delete', methods: ['POST'])]
     public function delete(Image $image, EntityManagerInterface $em): JsonResponse
     {
-        $filePath = $this->getParameter('kernel.project_dir') . '/public/uploads/images' . $image->getFile();
+        $file = $this->getParameter('kernel.project_dir')
+            .'/public/uploads/images/'.$image->getFile();
 
-        // Borrar el archivo si existe
-        if (file_exists($filePath)) {
-            unlink($filePath);
+        if (file_exists($file)) {
+            unlink($file);
         }
 
-        // Borrar de la base de datos
         $em->remove($image);
         $em->flush();
 
-        return new JsonResponse(['success' => true]);
+        return $this->json(['ok' => true]);
     }
 }

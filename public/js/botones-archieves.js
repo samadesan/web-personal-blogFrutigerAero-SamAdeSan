@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Likes
+    // LIKE
     document.querySelectorAll('.btn-like').forEach(btn => {
-        btn.addEventListener('click', function () {
-            const id = this.dataset.id;
+        btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
 
             fetch('/image/like/' + id, {
                 method: 'POST',
@@ -16,41 +16,66 @@ document.addEventListener('DOMContentLoaded', () => {
                     return res.json();
                 })
                 .then(data => {
-                    if (data?.numLikes !== undefined) {
+                    if (data && data.numLikes !== undefined) {
                         document.getElementById('likes-' + id).textContent = data.numLikes;
                     }
                 });
         });
-    }); 
+    });
 
-    // Descargas
+
+// DOWNLOAD
     document.querySelectorAll('.btn-download').forEach(btn => {
-        btn.addEventListener('click', function () {
-            const id = this.dataset.id;
-            const fileUrl = this.dataset.file;
+        btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+            const file = btn.dataset.file;
 
-            if (confirm("¿Quieres descargar esta imagen?")) {
-                fetch('/image/download/' + id, {
-                    method: 'POST',
-                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            if (!confirm('¿Quieres descargar la imagen?')) return;
+
+            fetch('/image/download/' + id, {
+                method: 'POST',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            })
+                .then(res => {
+                    if (res.status === 401) {
+                        window.location.href = '/login';
+                        return;
+                    }
+                    return res.json();
                 })
-                    .then(res => res.json())
-                    .then(data => {
+                .then(data => {
+                    if (data && data.numDownloads !== undefined) {
                         document.getElementById('downloads-' + id).textContent = data.numDownloads;
 
                         const a = document.createElement('a');
-                        a.href = fileUrl;
-                        a.download = fileUrl.split('/').pop();
+                        a.href = file;
+                        a.download = file.split('/').pop();
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
-                    });
-            }
+                    }
+                });
         });
     });
 
 
-    // Opcional: aumentar vistas cuando se carga la imagen (o cuando la veas)
+// DELETE
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+
+            if (!confirm('¿Seguro que quieres borrar esta imagen?')) return;
+
+            fetch('/image/delete/' + id, {
+                method: 'POST',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            })
+                .then(() => location.reload());
+        });
+    });
+
+
+    // Visitas
     document.querySelectorAll('.image-item img').forEach(img => {
         const id = img.closest('.image-item').querySelector('.btn-like').dataset.id;
         fetch(`/image/view/${id}`, {

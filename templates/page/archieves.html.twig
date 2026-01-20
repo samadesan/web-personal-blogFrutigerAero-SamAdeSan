@@ -35,19 +35,21 @@
                         <audio src="media/Flash%20Casanova%20Lease.mp3" controls></audio>
                     </article>
                 </section>
-                <section id="Galería de imagenes">
+                <section id="galeria-imagenes">
                     {# Aquí el código de la galería de imagenes de las personas que lo han publicado en la categoría (poner categoría también) #}
                     <div class="image-grid">
                         {% for image in images %}
+                            {% set imagePath = asset('uploads/images/' ~ image.file|url_encode) %}
                             <div class="image-item">
-                                <img src="{{ asset('uploads/images/' ~ image.file|url_encode) }}" alt="Imagen {{ loop.index }}">
+                                <img src="{{ imagePath }}" alt="imagen {{ image.id }}">
                                 <p><strong>Categoría:</strong> {{ image.category.name }}</p>
                                 <p>
                                     <button class="btn-like" data-id="{{ image.id }}">👍</button> Likes: <span id="likes-{{ image.id }}">{{ image.numLikes }}</span>
                                     | 👁️ Vistas: {{ image.numViews }}
-                                    | <button class="btn-download" data-id="{{ image.id }}" data-file="{{ asset('images/index/gallery/' ~ image.file|url_encode) }}">⬇</button>️ Descargas: <span id="downloads-{{ image.id }}">{{ image.numDownloads }}</span>
+                                    | <button class="btn-download" data-id="{{ image.id }}" data-file="{{ imagePath }}">⬇</button><span id="downloads-{{ image.id }}">{{ image.numDownloads }}</span>
                                 </p>
                                 <button class="btn-delete" data-id="{{ image.id }}">Borrar imagen</button>
+                                <button type="button"><a href="{{ path('imagen-nueva') }}">Subir otra Nueva</a></button>
                             </div>
                         {% else %}
                             <div class="no-images">
@@ -56,7 +58,6 @@
                                 <a href="{{ path('imagen-nueva') }}" class="custom-file-button">Subir imagen nueva</a>
                             </div>
                         {% endfor %}
-
                     </div>
                     {% block javascripts %}
                         <script src="{{ asset('js/botones-archieves.js') }}"></script>
